@@ -1,0 +1,260 @@
+/* www/custom.css 完整内容 */
+/* 设置整体背景颜色 */
+body {
+  background-color: #e6f7ff;
+  font-family: 'Microsoft YaHei', sans-serif;
+}
+custom_css <- "
+/* 设置整体背景颜色 */
+body {
+  background-color: #e6f7ff;
+  font-family: 'Microsoft YaHei', sans-serif;
+}
+
+/* 设置标题面板的样式 */
+.title {
+  background-color: #0078d7;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* 在标题中添加的 help 元素样式 */
+.title .help {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ffffff;
+  color: #0078d7;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.title .help:hover {
+  background-color: #005a9e;
+  color: #ffffff;
+}
+
+/* 设置侧边栏面板的样式 */
+.sidebar {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  height: calc(100vh - 100px);
+  overflow-y: auto;
+  width: 300px;
+  position: fixed;
+  left: 0;
+  top: 70px;
+  transition: left 0.3s ease;
+}
+
+.sidebar.hidden {
+  left: -300px;
+}
+
+.main {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  height: calc(100vh - 100px);
+  width: calc(100% - 315px);
+  position: fixed;
+  left: 315px;
+  top: 70px;
+  overflow: auto; /* 当内容超出时显示滚动条 */
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.main.full-width {
+  width: calc(100% - 15px);
+  left: 15px;
+}
+
+.form-group.shiny-input-container {
+  margin-bottom: 15px;
+}
+
+.download-button {
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.download-button:hover {
+  background-color: #005a9e;
+}
+
+#treePlot, #hebPlot, #arcPlot, #chordPlot, #sankeyPlot {
+  object-fit: contain;
+  display: block;
+  margin: auto; 
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#toggle-sidebar {
+  position: fixed;
+  left: 300px;
+  top: 70px;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #0078d7;
+  border: none;
+  padding: 5px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  transition: left 0.3s ease;
+}
+
+#restore-sidebar {
+  position: fixed;
+  left: -30px;
+  top: 70px;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #0078d7;
+  border: none;
+  padding: 5px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 14px;
+  z-index: 10;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  display: none;
+  width: auto;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.3s ease;
+}
+
+.sidebar.hidden #restore-sidebar {
+  left: 0;
+  display: flex;
+}
+
+.sidebar.hidden #toggle-sidebar {
+  left: 0;
+}
+
+details {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+summary {
+  padding: 10px;
+  background-color: #f4f4f4;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::after {
+  content: '+';
+  float: right;
+  font-size: 1.2em;
+}
+
+details[open] summary::after {
+  content: '-';
+}
+
+.sidebar-group {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.sidebar-group h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.loading-spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading-spinner .spinner {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.plot-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+"
+/* ... 省略其余CSS代码 ... */
